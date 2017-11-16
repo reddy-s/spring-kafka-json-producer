@@ -1,6 +1,6 @@
 package com.innovate.producer.config;
 
-import com.innovate.producer.dto.BetEvent;
+import com.innovate.producer.dto.BetEventDTO;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,12 +34,12 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public ProducerFactory<String, BetEvent> producerFactory() {
+    public ProducerFactory<String, BetEventDTO> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigs());
     }
 
     @Bean
-    public KafkaTemplate<String, BetEvent> kafkaTemplate() {
+    public KafkaTemplate<String, BetEventDTO> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 

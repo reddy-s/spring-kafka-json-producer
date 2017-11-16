@@ -3,7 +3,7 @@ package com.innovate.producer.dto;
 /**
  * Created by reddys on 10/11/2017.
  */
-public class BetEvent {
+public class BetEventDTO {
 
     private String username;
 
@@ -11,11 +11,11 @@ public class BetEvent {
 
     private Integer stake;
 
-    public BetEvent() {
+    public BetEventDTO() {
         super();
     }
 
-    public BetEvent(String username, String event, Integer stake) {
+    public BetEventDTO(String username, String event, Integer stake) {
         super();
         this.username = username;
         this.event = event;
@@ -48,6 +48,6 @@ public class BetEvent {
 
     @Override
     public String toString() {
-        return "BetEvent [username=" + username + ", event=" + event + ", stake=" + stake + "]";
+        return "BetEventDTO [username=" + username + ", event=" + event + ", stake=" + stake + "]";
     }
 }

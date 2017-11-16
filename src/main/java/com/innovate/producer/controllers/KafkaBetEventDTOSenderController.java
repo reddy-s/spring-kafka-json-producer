@@ -1,6 +1,6 @@
 package com.innovate.producer.controllers;
 
-import com.innovate.producer.dto.BetEvent;
+import com.innovate.producer.dto.BetEventDTO;
 import com.innovate.producer.services.KafkaBetEventSenderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,17 +14,16 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping(value = "/message/")
-public class KafkaStringSenderController {
+public class KafkaBetEventDTOSenderController {
 
-    private Logger log = LoggerFactory.getLogger(KafkaStringSenderController.class);
+    private Logger log = LoggerFactory.getLogger(KafkaBetEventDTOSenderController.class);
 
     @Autowired
     private KafkaBetEventSenderService KafkaBetEventSenderService;
 
     @PostMapping(value = "/producer/{event}")
-    public ResponseEntity<BetEvent> produceMessage(@PathVariable String event,@RequestBody BetEvent betEvent){
-        log.info("Data Received topic: {}; message:{}", event, betEvent);
-        KafkaBetEventSenderService.send(event, betEvent);
-        return new ResponseEntity<BetEvent>(betEvent, HttpStatus.OK);
+    public ResponseEntity<BetEventDTO> produceMessage(@PathVariable String event,@RequestBody BetEventDTO betEventDTO){
+        KafkaBetEventSenderService.send(event, betEventDTO);
+        return new ResponseEntity<BetEventDTO>(betEventDTO, HttpStatus.OK);
     }
 }
