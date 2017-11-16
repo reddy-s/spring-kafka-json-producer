@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping(value = "/message/")
-public class KafkaStringSenderController {
+public class KafkaBetEventDTOSenderController {
 
-    private Logger log = LoggerFactory.getLogger(KafkaStringSenderController.class);
+    private Logger log = LoggerFactory.getLogger(KafkaBetEventDTOSenderController.class);
 
     @Autowired
     private KafkaBetEventSenderService KafkaBetEventSenderService;
