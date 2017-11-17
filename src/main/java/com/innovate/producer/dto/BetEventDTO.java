@@ -1,5 +1,8 @@
 package com.innovate.producer.dto;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by reddys on 10/11/2017.
  */
@@ -11,15 +14,43 @@ public class BetEventDTO {
 
     private Integer stake;
 
+    private String eventTime = convertCurrentDateTimeToString("yyyy-MM-dd HH:mm:ss.SSS", new Date());
+
+    private String jurisdiction;
+
+    private String country;
+
+    private String brand;
+
+    private String product;
+
+    private String channel;
+
+    private String currency;
+
     public BetEventDTO() {
         super();
     }
 
-    public BetEventDTO(String username, String event, Integer stake) {
-        super();
+    public BetEventDTO(
+            String username,
+            String event,
+            Integer stake,
+            String jurisdiction,
+            String country,
+            String brand,
+            String product,
+            String channel,
+            String currency) {
         this.username = username;
         this.event = event;
         this.stake = stake;
+        this.jurisdiction = jurisdiction;
+        this.country = country;
+        this.brand = brand;
+        this.product = product;
+        this.channel = channel;
+        this.currency = currency;
     }
 
     public String getUsername() {
@@ -46,8 +77,71 @@ public class BetEventDTO {
         this.stake = stake;
     }
 
+    public String getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(String eventTime) {
+        this.eventTime = eventTime;
+    }
+
+    public String getJurisdiction() {
+        return jurisdiction;
+    }
+
+    public void setJurisdiction(String jurisdiction) {
+        this.jurisdiction = jurisdiction;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public String getChannel() {
+        return channel;
+    }
+
+    public void setChannel(String channel) {
+        this.channel = channel;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
     @Override
     public String toString() {
-        return "BetEventDTO [username=" + username + ", event=" + event + ", stake=" + stake + "]";
+        return "BetEventDTO [username=" + username + ", event=" + event + ", stake=" + stake +
+                ", eventTime=" + eventTime + ", jurisdiction=" + jurisdiction + ", country=" + country +
+                ", brand=" + brand + ", product=" + product + ", channel=" + channel +", currency=" + currency +"]";
+    }
+
+    private String convertCurrentDateTimeToString(String format,Date now){
+        SimpleDateFormat sdfDate = new SimpleDateFormat(format);
+        return sdfDate.format(now);
     }
 }
