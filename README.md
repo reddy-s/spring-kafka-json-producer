@@ -60,3 +60,5 @@ curl -X POST \
 This would post a message to [customer-depost]() topic. 
 
 > Note: If the topic does not exist, kafka would create it for you based on the configuration of your cluster. Its recommonded that you create the topic yourself, so that you can specify the number of partitions and the required replication factor.
+
+Check the [Kafka Consumer](https://github.com/reddy-s/spring-kafka-json-consumer) for reading and persisting messaginf from Kafka
