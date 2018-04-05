@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by reddys on 10/11/2017.
  */
 @RestController
-@RequestMapping(value = "/message/")
+@RequestMapping(value = "/message")
 public class KafkaBetEventDTOSenderController {
 
     private Logger log = LoggerFactory.getLogger(KafkaBetEventDTOSenderController.class);
@@ -22,7 +22,7 @@ public class KafkaBetEventDTOSenderController {
     private KafkaBetEventSenderService KafkaBetEventSenderService;
 
     @PostMapping(value = "/producer/{event}")
-    public ResponseEntity<BetEventDTO> produceMessage(@PathVariable String event,@RequestBody BetEventDTO betEventDTO){
+    public ResponseEntity<BetEventDTO> produceMessage(@PathVariable String event, @RequestBody BetEventDTO betEventDTO){
         KafkaBetEventSenderService.send(event, betEventDTO);
         return new ResponseEntity<BetEventDTO>(betEventDTO, HttpStatus.OK);
     }
